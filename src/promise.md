@@ -159,6 +159,17 @@ class MyPromise {
   catch(onRejected){
     return this.then(null, onRejected);
   }
+
+  /**
+   * finally 就是不管成功还是失败的时候都会执行
+   * 可以利用then来模拟，无论成功还是失败都会走到then当中
+   */
+  finally(callback) {
+    return this.then(
+      value  => MyPromise.resolve(callback()).then(() => value),
+      reason => MyPromise.resolve(callback()).then(() => { throw reason })
+    );
+  };
 }
 
 MyPromise.resolve = function (val) {
