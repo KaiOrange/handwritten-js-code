@@ -29,6 +29,12 @@ console.log("Even or odd via compose ?",oddOrEvenWords("hello your reading about
 const compose = (...fns) => (value) => fns.reverse().reduce((acc, fn) => fn(acc), value);
 ```
 
+也可以使用reduceRight来反向迭代。
+
+```JavaScript
+const compose = (...fns) => (value) => fns.reduceRight((acc, fn) => fn(acc), value);
+```
+
 ### 逆向调用法 ###
 
 思路与上面一致，使用while循环从后往前执行。
