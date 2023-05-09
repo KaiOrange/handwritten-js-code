@@ -13,7 +13,7 @@
 9. [函数记忆化](./src/memoize.md)
 10. [函数bind实现](./src/bind.md)
 11. [函数call与apply实现](./src/call.md)
-12. [Object.create实现](./src/Object.crteate.md)
+12. [Object.create实现](./src/Object.create.md)
 13. [new实现](./src/new.md)
 14. [instanceOf实现](./src/instanceOf.md)
 15. [forOf循环实现](./src/forOf.md)

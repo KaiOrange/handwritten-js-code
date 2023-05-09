@@ -1,4 +1,4 @@
-# Object.crteate实现 #
+# Object.create实现 #
 
 ## 描述 ##
 
@@ -17,7 +17,25 @@ obj.sayName(); // 打印 我是Orange
 man.sayName(); // 打印 我是AAA
 ```
 
-## 实现 ##
+## 三行代码简易实现 ##
+
+```JavaScript
+const create = (proto) => {
+  const F = function () {};
+  F.prototype = proto;
+  return new F();
+}
+```
+
+这三行已经实现了`Object.create`的最基础功能，但是与`Object.create`稍微有些区别：
+
+1. 参数类型检查；
+2. `Object.create`拥有第二个参数，也就是属性操作符；
+3. 对于`Object.create(null)`返回的对象的`__proto__`属性也是null。
+
+所以完整的实现还应对上面三种做特殊处理。
+
+## 完整实现 ##
 
 步骤：
 
@@ -34,11 +52,11 @@ const create = (proto, properties) => {
     throw new TypeError(`Object prototype may only be an Object or null: ${proto}`)
   }
   // 创建构造函数
-  const Constructor = function () {};
+  const F = function () {};
   // 构造函数的原型指向对象
-  Constructor.prototype = proto;
+  F.prototype = proto;
   // 创建实例对象
-  const obj = new Constructor();
+  const obj = new F();
   // 支持第二个参数
   if (properties) {
     Object.defineProperties(obj, properties);
