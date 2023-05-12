@@ -22,3 +22,6 @@
 18. [Symbol实现](./src/Symbol.md)
 19. [Set实现](./src/Set.md)
 20. [事件系统](./src/event.md)
+21. [sleep延迟执行](./src/sleep.md)
+22. [sleep链式打印](./src/sleep2.md)
+23. [repeat重复执行](./src/repeat.md)
