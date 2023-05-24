@@ -39,20 +39,20 @@ function draggable(node) {
     node = querySelector(node);
   }
 
-  let diffX = 0;
-  let diffY = 0;
+  let offsetX = 0;
+  let offsetY = 0;
   let target = null;
 
   node.addEventListener('mousedown', function handleMousedown(e) {
-    diffX = e.clientX - node.offsetLeft;
-    diffY = e.clientY - node.offsetTop;
+    offsetX = e.offsetX;
+    offsetY = e.offsetY;
     target = node;
   });
 
   window.addEventListener('mousemove', function handleMousemove(e) {
     if(target) {
-      target.style.left = e.clientX - diffX + "px";
-      target.style.top = e.clientY - diffY  + "px";
+      target.style.left = e.clientX - offsetX + "px";
+      target.style.top = e.clientY - offsetY  + "px";
     }
   });
 
@@ -62,4 +62,4 @@ function draggable(node) {
 } 
 ```
 
-`clientX`是当前鼠标相对浏览器的X坐标，`offsetLeft`是当前元素最左边距离浏览器左测的距离，`e.clientX - node.offsetLeft`可以得到鼠标相对于node元素左上角的X轴距离，也就是鼠标在元素X轴上的偏移量。`e.clientX - diffX`为移动后鼠标相对浏览器X轴的距离减去鼠标在元素上的偏移量，也就是移动后元素的X坐标。Y坐标同理。
+`offsetX`是鼠标相对当前元素的X坐标，`clientX`是鼠标相对于浏览器的X坐标，`e.clientX - offsetX`可以计算出移动后元素的left值。Y坐标同理。
